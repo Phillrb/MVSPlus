@@ -7,7 +7,7 @@ These specialist pieces of hardware are becoming increaingly hard to find and mo
 MVSPlus addresses this issue by utilising a relatively cheap Arduino Mega 2560
 
 By default the sketch utilisies a SainSmart LCD to display the credits and current game position but, with some un-commenting, it supports 7-Segment display output (via MVLED.h) and LEDs / bulbs for game position.
-When attempting to connect multiple output pins on an arduino supply a relatively high input voltage (9V+) to the arduino.
+Use of a relay to drive lamps is recommended.
 
 Arduino Setup
 =============
