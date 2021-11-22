@@ -1,4 +1,4 @@
-//  MVSPlus
+//  MVLED
 //  Arduino replacement for both MV-LED (credits) and MV-ELA (lamp driver) MVS arcade hardware.
 //  These specialist pieces of hardware are becoming increaingly hard to find and more expensive with their increasing rarity.
 //  MVSPlus addresses this issue by utilising a relatively cheap Arduino Mega 2560
