@@ -6,6 +6,9 @@
 //  Attach physical pin 4 to GND terminal on Player 1 Start microswitch
 //  Attach physical pin 5 to NO terminal on Player 1 Start microswitch
 //  Attach physical pin 8 to VCC 5V (from PSU)
+//  Optionally attach physical pin 6 to NO terminal on Player 2 Start microswitch
+//  - 'CONTROL_WITH_P2' must be set to 'true'
+//  - this will allow holding down of P2 Start at boot to bypass this mod
 //
 //  Created by Phillip Riscombe-Burton on 22/11/2021.
 //  Copyright (c) 2021 Phillip Riscombe-Burton. All rights reserved.
@@ -38,20 +41,35 @@
 // ATTiny85
 // Sketch >> UPLOAD USING PROGRAMMER!
 
-const int ACTION_PIN = 0; // 0 = physical pin 5
-const int HOLD_1P_MS = 10000; // 10 secs
+#define CONTROL_WITH_P2 true
 
-// Neo Geo Pic&Mix mode requires 1P button to be held at boot
+const int ACTION_PIN = 0; // 0 = physical pin 5 - wire to P1 Start
+#if CONTROL_WITH_P2
+const int CANCEL_PIN = 1; // 1 = physical pin 6 - wire to P2 Start
+#endif
+
+const int HOLD_1P_MS = 10000; // 10 secs
 
 void setup() {
 
-   // Hold the 1P signal at startup
-    pinMode(ACTION_PIN, OUTPUT);
-    digitalWrite(ACTION_PIN, LOW);
-    delay(HOLD_1P_MS);
+#if CONTROL_WITH_P2
+    // Allow reading from cancel pin
+    pinMode(CANCEL_PIN, INPUT);
 
-    // Stop controlling 1P button
-    pinMode(ACTION_PIN, INPUT);
+    // Only perform mod if cancel pin is not held down
+    if (digitalRead(CANCEL_PIN) == HIGH) {
+#endif
+      
+      // Hold the 1P signal at startup
+      pinMode(ACTION_PIN, OUTPUT);
+      digitalWrite(ACTION_PIN, LOW);
+      delay(HOLD_1P_MS);
+      
+      // Stop controlling 1P button
+      pinMode(ACTION_PIN, INPUT);
+#if CONTROL_WITH_P2
+    }
+#endif
 }
 
 void loop() {
