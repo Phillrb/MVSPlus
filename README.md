@@ -43,3 +43,4 @@ Setup
 - Attach physical pin 4 to GND terminal on Player 1 Start microswitch
 - Attach physical pin 5 to NO terminal on Player 1 Start microswitch
 - Attach physical pin 8 to VCC 5V (from PSU)
+- Optionally attach physical pin 6 to NO terminal on Player 2 Start microswitch
