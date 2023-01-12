@@ -30,6 +30,7 @@ LiquidCrystal lcd(8, 13, 9, 4, 5, 6, 7);
 
 Use an ATTiny85 to always boot the MVS into Pic'n'Mix mode.
 ATTiny85 holds down P1 Start for 10 secs at boot-time. 
+Optionally, support holding down P2 Start to disable auto-boot of Pic'n'Mix mode at start-up.
 
 Requires
 
@@ -42,5 +43,3 @@ Setup
 - Attach physical pin 4 to GND terminal on Player 1 Start microswitch
 - Attach physical pin 5 to NO terminal on Player 1 Start microswitch
 - Attach physical pin 8 to VCC 5V (from PSU)
-
-
